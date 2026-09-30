@@ -2,6 +2,15 @@
 
 本项目遵循语义化版本。项目起源于对已停更插件 `kte66/dsh-balance` @ `617876a` 的**接替实现**——它是 **MIT 派生作品**（派生范围与实测重合度见 [PROVENANCE.md](PROVENANCE.md)），不是独立重写。
 
+## 0.1.1 — 2026-09-30
+
+### 修复
+
+- **保存设置后整页空白（本版本引入的回归）**：`SettingsSection` 在 `saved` 分支引用了 `config.intervalMs` / `config.lowBalanceThreshold`，但该函数内**从未声明 `config`**（只在 `BalancePill` 中声明过；上游对应的 `var config = cfg[0], setConfig = cfg[1]` 在重写时被漏掉）。
+  - **触发路径**：初始渲染 `saved === false`，该分支不执行 → 设置页正常；点击「保存」→ `setSaved(true)` → 重渲染进入该分支 → `ReferenceError: config is not defined` → React 无错误边界，卸载整棵树 → 页面空白。
+  - **修复**：补回声明 `var config = cfg[0], setConfig = cfg[1];`。
+  - **回归防线**：新增 `test/client.test.mjs`（5 条断言）。它用最小 hooks 运行时加载真实客户端 bundle、捕获槽位注册并按壳层方式渲染；其中"保存后重渲染不得抛异常"这条在修复前**确实失败**（`ReferenceError: config is not defined` @ `lib/client.js:311`）。同时覆盖参数校验失败分支、余额低于阈值与查询失败分支。
+
 ## 0.1.0 — 2026-09-30
 
 首个版本：接替 `kte66/dsh-balance`，保留"余额常驻输入框"UX，修复其安全与健壮性缺陷。

@@ -1,6 +1,6 @@
 {
   "name": "dsh-composer-balance",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "DeepSeek 余额常驻输入框：小字余额 + 刷新按钮 + 低余额告警 + deepseek_balance 模型工具。密钥不落盘（经 stdin 传给 curl）。",
   "license": "MIT",
   "type": "module",
@@ -21,7 +21,7 @@
     "CHANGELOG.md"
   ],
   "scripts": {
-    "test": "node test/host.test.mjs"
+    "test": "node test/host.test.mjs && node test/client.test.mjs"
   },
   "engines": {
     "node": ">=22"
