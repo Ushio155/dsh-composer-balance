@@ -1,11 +1,7 @@
 MIT License
 
 Copyright (c) 2026 Ushio155 (dsh-composer-balance)
-
-Portions of this work are derived from "dsh-balance" by kte66
-(https://github.com/kte66/dsh-balance), which declares the MIT license in its
-package.json. See PROVENANCE.md for the exact upstream commit, what was reused,
-and what was changed.
+Copyright (c) 2026 kte66 (upstream dsh-balance, https://github.com/kte66/dsh-balance)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
