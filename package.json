@@ -1,0 +1,41 @@
+{
+  "name": "dsh-composer-balance",
+  "version": "0.1.0",
+  "description": "DeepSeek 余额常驻输入框：小字余额 + 刷新按钮 + 低余额告警 + deepseek_balance 模型工具。密钥不落盘（经 stdin 传给 curl）。",
+  "license": "MIT",
+  "type": "module",
+  "main": "./lib/index.js",
+  "exports": {
+    ".": { "default": "./lib/index.js" },
+    "./client": { "default": "./lib/client.js" },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "cordis.patch.yml",
+    "README.md",
+    "LICENSE",
+    "PROVENANCE.md",
+    "SECURITY.md",
+    "MAINTENANCE.md",
+    "CHANGELOG.md"
+  ],
+  "scripts": {
+    "test": "node test/host.test.mjs"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "keywords": [
+    "dsh",
+    "deepseek-harness",
+    "dsh-plugin",
+    "balance",
+    "composer",
+    "cordis"
+  ],
+  "dsh": {
+    "bundle": { "patch": "./cordis.patch.yml" },
+    "client": { "inject": [], "platform": "web", "immediately": true }
+  }
+}

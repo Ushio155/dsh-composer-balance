@@ -1,0 +1,5 @@
+# dsh-composer-balance bundle patch: one host row over the profile root.
+# Applied after the dsh-base / dsh-web-app layers; adds the balance plugin row.
+- insert:
+    - id: dsh-composer-balance
+      name: 'dsh-composer-balance'
